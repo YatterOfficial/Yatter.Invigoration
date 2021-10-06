@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>Anthony Harrison</Authors>
+    <Description>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TObject @object), or Invigorator&lt;TObject,TActor&gt;.Act(string objectjson).</Description>
+    <Copyright>Anthony Harrison</Copyright>
+    <Owners>Anthony Harrison</Owners>
+    <Summary>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to an Invigorator.</Summary>
+    <Title>Yatter.Invigoration</Title>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Newtonsoft.Json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>
