@@ -467,3 +467,51 @@ using(CarActor carActor = new CarActor())
 ```
 
 You can imagine that before this was called, that a user had added a work-ticket request to another system, prior to this being called, and that the MechanicActor knew where to get the WorkTicket request from, based upon the identity of the Car that was initially supplied to CarActor. The identity of the Car would also expose the capacity of the BillingActor to determine who the car owner was, thus determining who to bill.
+
+### Designing a Nested Invigoration Chain
+
+Nested Invigoration Chains can be designed quite easily, merely by bullet-pointing the workflow, creating a trammel for each bullet point, and for each trammel, designing the TObject and TActor, taking into account that each one's starting state will be determined by the output state of the nested trammel.
+
+For example, let's design a simple CreateUser trammel chain.
+
+In this example, we will create a user and create the user's micro-site within the application-wide multi-user infrastructure, and then finally, we will email them a link saying that their account can be logged into.
+
+We will also use TO / TA class naming notation to name TObject and TActor classes, respectively. This will be reflected in the Invigoration Nesting.
+
+The trammel-chain, which will define the Invigorator nesting, is composed from the following bullet-points:
+
+- Determine if User's desired UserName is available - TOCreateUserApplication, TACreateUserName
+- Determine if User's information is valid and complete - TOUserAccountCreationDetailsSubmission, TAUserAccountCreationDetailsSubmission
+- Create UserMicrosite - TOCreateUserMicrosite, TACreateUserMicrosite
+- Email User - TOEmailUserSiteReady, TAEmailUserSiteReady
+
+Now we can scratch out the prevailing psuedocode:
+
+```
+using(CarActor carActor = new CarActor())
+{
+  carActor.Path = "cars/W123ABC"; // pseudocode that illustrates the capacity to acquire a Car object
+  
+  TAEmailUserSiteReady cascadedResult = /* Read the order from bottom to top - such is the nature of nesting! */
+                        await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
+                        await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
+                        await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
+                        await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(carActor))));
+  if(!cascadedResult.IsSuccess)
+  {
+    // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
+  }
+  else
+  {
+    // Inform the user that an email will be sent to them when 
+    // the account is created, requiring them to verify their 
+    // email address before they can log in.
+  }
+}
+```
+
+_Now it is just a case of creating each TObject and TActor !!!_
+
+
+
+
