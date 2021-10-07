@@ -84,6 +84,8 @@ TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActo
 Example:
 
 ```
+carActor.Add([any objects that the actor needs to act upon the car]); // pseudocode
+...
 CarActor acted = await Invigorator.ActAsync<Car,CarActor>(carActor); // or (car, carActor)
 ...
 var success = acted.IsSuccess;
