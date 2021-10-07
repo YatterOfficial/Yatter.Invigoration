@@ -450,6 +450,8 @@ The previous nested example might look like this:
 ```
 using(CarActor carActor = new CarActor())
 {
+  carActor.Path = "cars/W123ABC"; // pseudocode that illustrates the capacity to acquire a Car object
+  
   BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
                         await Invigorator.ActAsync<WorkTicket,MechanicActor>(
                         await Invigorator.ActAsync<Car,CarActor>(carActor)));
@@ -464,3 +466,4 @@ using(CarActor carActor = new CarActor())
 }
 ```
 
+You can imagine that before this was called, that a user had added a work-ticket request to another system, prior to this being called, and that the MechanicActor knew where to get the WorkTicket request from, based upon the identity of the Car that was initially supplied to CarActor
