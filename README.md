@@ -394,3 +394,53 @@ The ActionBase, as described, is as follows:
       }
   }
 ```
+
+### TObject and TActor Invigoration
+
+The capacity of both TObject and TActor to cohesively exist is enabled by the Invigorator, which the following example illustrates:
+
+```
+using(CarActor carActor = new CarActor()) // Both ObjectBase and ActionBase inherit from IDisposable
+{
+    Car car = null;
+    
+    carActor.Path = "buycar.json";
+
+    CarActor acted = await Yatter.Invigoration.Invigorator.ActAsync<Car,CarActor>(carActor);
+    
+    carActor.AddDisposableObject(acted);
+
+    car = acted.Car;
+
+    if(acted.IsSuccess)
+    {
+        if(acted!=null&&acted.Car!=null&&acted.Car.Registration!=null)
+        {
+            PocketView hereareyourcarkeys = span[style:"color:purple"]($"Here are your keys to {car.Registration}!");
+            hereareyourcarkeys.Display("text/html");
+        }
+        else
+        {
+            PocketView wevelostyourcarkeys = span[style:"color:purple"]("We've lost your car keys!");
+            wevelostyourcarkeys.Display("text/html");
+        }
+    }
+    else
+    {
+        PocketView wevelostyourcarkeys = span[style:"color:purple"](@"We've not just lost your car keys, 
+                                                                    but we've lost the whole car as well!");
+        wevelostyourcarkeys.Display("text/html");    
+
+        if(!string.IsNullOrEmpty(acted.Message))
+        {
+            PocketView technicalError = span[style:"color:red"]($"Technical Error: {acted.Message}");
+            technicalError.Display("text/html");    
+        }
+    }
+    
+    // Car is automatically disposed of when CarActor is disposed of, see each one's Dispose() override.
+}
+```
+
+
+
