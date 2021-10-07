@@ -50,7 +50,8 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 ### TRAMMEL
 
 - A 'Trammel' (noun) is defined as "restrictions or impediments to freedom of action.", with 'freedom within the channel of the trammel' implied to exist by the very nature of the constraints.
-- A pictorial grasp of how a trammel can dynamically convert singular lines of actions into a range of dynamic opportunities, can be obtained by looking at videos on YouTube about [The Trammel of Archimedes](https://www.youtube.com/results?search_query=archimedes+Trammel). 
+- Using Generics, the 'T' of Trammel is represented as the T of TObject and the T of TActors
+- A pictorial grasp of how a trammel can dynamically convert singular TObjects and TActors into a range of dynamic opportunities, can be obtained by looking at videos on YouTube about [The Trammel of Archimedes](https://www.youtube.com/results?search_query=archimedes+Trammel). The most basic representation is the one at this [this](https://youtu.be/7Fn-26Jmi5E?t=46) - thanks Mathologer - where each of the two axis can be seen to represent a generics TObject and TActor, respectively.
 
 16 Invigorator Trammels are possible, each illustrated below, of which the first 15 can be derived by removing all of the exposed permutations, or by the synchronous reduction, of the 16th:
 
