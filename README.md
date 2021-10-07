@@ -139,7 +139,7 @@ This message may have been composed from:
 
 Alternatively, the BillingActor might have queried the ```mechanicActed.NestedResponses``` list, where each of the previous actors had added itself to the list so that the next one could copy it, add itself, and pass it on. Although this is an advanced topic, the final actor merely needs to iterate through this list to find where the first ```IsSuccess=false``` occurred, and react accordingly.
 
-This example does, however, illustrate the simple Invigoration behind a user pressing a submit button on a car servicing website: all the Invigoration happens in a single line of nested code that is easily assembled, readily readable, and easily understood and located locatable in the TObject / TActor matrix.
+This example does, however, illustrate the simple Invigoration behind a user pressing a submit button on a car servicing website: all the Invigoration happens in a single line of nested code that is easily assembled, readily readable, and easily understood and located in the TObject / TActor matrix.
 
 #### Trammel Summary
 
