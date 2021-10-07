@@ -501,11 +501,20 @@ using(TACreateUserName createAcount = new TACreateUserName())
 {
   createAcount.UserApplication = userApplication;
   
-  TAEmailUserSiteReady cascadedResult = /* Read the order from bottom to top - such is the nature of nesting! */
-                        await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
-                        await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
-                        await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
-                        await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount))));
+  /* TIP:
+    - Read the order from bottom Invigorator to the top Invigorator, 
+    and the top extension method to the bottom extension method.
+    - Such is the nature of nesting! */
+    
+  TAEmailUserSiteReady cascadedResult = /* Nested, see TIP above */
+    await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
+    await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
+    await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
+    await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount)
+                      .ReturnTAUserAccountCreationDetailsSubmissionFromTACreateUserName())
+                      .ReturnTACreateUserMicrositeFromTAUserAccountCreationDetailsSubmission())
+                      .ReturnTAEmailUserSiteReadyFromTACreateUserMicrosite());
+                      
   if(!cascadedResult.IsSuccess)
   {
     // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
@@ -561,11 +570,5 @@ else
 ```
 
 _Now it is just a case of creating each TObject and TActor !!!_
-
-Should Invigorators be nested?
-
-On one hand, nesting has various obvious advantages.
-
-But on the other hand, it does necessitate the requirement for a TActor to preconfigure it's output to the actor that will consume it. 
 
 
