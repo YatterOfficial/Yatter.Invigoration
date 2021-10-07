@@ -149,5 +149,50 @@ This example does, however, illustrate the simple Invigoration behind a user pre
 
 ### A Coded Example
 
+We will start with the contrived TObject of a Car:
 
+```
+class Car : Yatter.Invigoration.ObjectBase
+{
+    public Car()
+    {
+        DataType = "Car";
+    }
+    public string DataType { get; set; }
+    public string Make { get; set; }
+    public string Color { get; set; }
+    public string Registration { get; set; }
+    public string Base64Image { get; set;}
 
+    public override void Act()
+    {
+        Actor.Action();
+    }
+    
+    public override void Dispose()
+    {
+        // Nothing to dispose of but if therer was, do it here!
+    }
+}
+```
+
+As Car is a trammel of TObject, it inherits from ObjectBase:
+
+```
+    public abstract class ObjectBase : IDisposable
+    {
+        [Newtonsoft.Json.JsonIgnore]
+        public IAction Actor { get; set; }
+
+        public void AddActor(IAction actor)
+        {
+            Actor = actor;
+        }
+
+        public virtual void Act() { }
+
+        public async virtual Task ActAsync() { }
+
+        public virtual void Dispose() { }
+    }
+```
