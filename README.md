@@ -53,7 +53,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 - Using Generics, the 'T' of Trammel is represented as the T of TObject and the T of TActors
 - TObject and TActor are pronounced tob-ject and tac-tor, respectively ~ tob and tac for short
 - A pictorial grasp of how a trammel can dynamically convert singular TObjects and TActors into a range of dynamic opportunities, can be obtained by looking at videos on YouTube about [The Trammel of Archimedes](https://www.youtube.com/results?search_query=archimedes+Trammel). The most basic representation is the one at [this](https://youtu.be/7Fn-26Jmi5E?t=46) timecode - thanks Mathologer - where each of the two axis can be seen to represent a generics TObject and TActor, respectively. Adding TObjects and TActors just adds to the axis, as seen in the other videos.
-- When a Software Engineer sees an Invogorator, because he knows that an Invigorator's signature is based upon TObjects and TActors, then his knowing that the Trammel-T is the base-class of each, he immediately knows where to find the Object that is acted upon, or the Action that the Actor effects upon the Object 
+- When a Software Engineer sees an Invigorator in a line-of-code, then because he knows that an Invigorator's signature is based upon TObjects and TActors, then his knowing that a Trammel-T reporesents the base-class of each, he immediately knows where to find the Object that is acted upon, or the Action that the Actor effects upon the Object 
 
 16 Invigorator Trammel-Couplets are possible, each illustrated below, of which the first 15 can be derived by removing all of the exposed permutations, or by the synchronous reduction, of the 16th:
 
