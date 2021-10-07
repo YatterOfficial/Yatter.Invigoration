@@ -31,7 +31,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 - it is desired to efficiently arrange functionality into ordered matrices of TObjects and TActor
 - software engineer's, seeing the word _Invigorator.Act..._ in a line of code, will immediately know it's inner structure - who will thus more readily adapt to being introduced to an existing code-base - who will then also know approximately where to easily find the invigorated matrices of TObjects and TActors, in the code-base, no matter how convoluted the actual applications workflows are
 - TObject and TActor matrices are essentially a look-up spreadsheet of the capability of an application
-- Invigorators are nested, rendering a lot of work in a single line, with the decisions that relate to the output of one, being handled by the input of the nesting Invigorator
+- Invigorators are nested, rendering a lot of work in a single line, with the decisions that relate to the output of one, being handled by the input of the nesting Invigorator; as such, Nested Invigorators remove the code-clutter of decisions that need to be made about their return values
 
 
 ## Definitions
