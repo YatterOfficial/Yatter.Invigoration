@@ -22,3 +22,37 @@ A series of pre-existing shapes are subjected to being dynamically arranged by a
 
 - A 'Trammel' (noun) is defined as "restrictions or impediments to freedom of action.", with 'freedom within the channel of the trammel' implied to exist by the very nature of the constraints.
 - A pictorial grasp of how a trammel can dynamically convert singular lines of actions into a range of dynamic opportunities, can be obtained by looking at videos on YouTube about [The Trammel of Archimedes](https://www.youtube.com/results?search_query=archimedes+Trammel). 
+
+16 Invigorator Trammels are possible, each illustrated below, of which the first 15 can be derived by removing all of the exposed permutations, or by the synchronous reduction, of the 16th:
+
+vis-a-vis:
+
+```
+Invigorator.Act<TObject,TActor>();
+Invigorator.Act<TObject,TActor>(TObject @object);
+Invigorator.Act<TObject,TActor>(TActor actor);
+Invigorator.Act<TObject,TActor>(TObject @object, TActor actor);
+
+TActor acted = Invigorator.Act<TObject,TActor>();
+TActor acted = Invigorator.Act<TObject,TActor>(TObject @object);
+TActor acted = Invigorator.Act<TObject,TActor>(TActor actor);
+TActor acted = Invigorator.Act<TObject,TActor>(TObject @object, TActor actor);
+
+await Invigorator.ActAsync<TObject,TActor>();
+await Invigorator.ActAsync<TObject,TActor>(TObject @object);
+await Invigorator.ActAsync<TObject,TActor>(TActor actor);
+await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);
+
+TActor acted = await Invigorator.ActAsync<TObject,TActor>();
+TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object);
+TActor acted = await Invigorator.ActAsync<TObject,TActor>(TActor actor);
+TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);
+```
+
+e.g. See below:
+
+```
+CarActor acted = await Yatter.Invigoration.Invigorator.ActAsync<Car,CarActor>(carActor);
+```
+
+
