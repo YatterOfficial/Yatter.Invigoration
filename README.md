@@ -488,15 +488,18 @@ The trammel-chain, which will define the Invigorator nesting, is composed from t
 Now we can scratch out the prevailing psuedocode:
 
 ```
-using(CarActor carActor = new CarActor())
+...
+TOCreateUserApplication userApplication = JsonConvert.DeserializeObject<TOCreateUserApplication>(userApplicationJson);
+...
+using(TACreateUserName createAcount = new TACreateUserName())
 {
-  carActor.Path = "cars/W123ABC"; // pseudocode that illustrates the capacity to acquire a Car object
+  createAcount.UserApplication = userApplication;
   
   TAEmailUserSiteReady cascadedResult = /* Read the order from bottom to top - such is the nature of nesting! */
                         await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
                         await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
                         await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
-                        await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(carActor))));
+                        await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount))));
   if(!cascadedResult.IsSuccess)
   {
     // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
