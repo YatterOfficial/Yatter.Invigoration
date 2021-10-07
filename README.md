@@ -22,6 +22,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 - be collectively deployed to achieve Facade pattern
 - be lineally ordered to achive Adapter pattern
 - be dynamically selected to achieve Factory pattern
+- differentiate between objects, and the actions that objects are subject to
 
 *Invigorators* are particularly useful when:
 
