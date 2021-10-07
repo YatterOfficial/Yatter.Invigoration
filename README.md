@@ -14,14 +14,14 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store._
 
 ## Benefits
 
-*Invigorators* can be arranged to:
+*Invigorators* can, for example, be arranged to:
 
 - be encapsulted to achieve Composite pattern
 - be collectively deployed to achieve Facade pattern
 - be lineally ordered to achive Adapter pattern
 - be dynamically selected to achieve Factory pattern
 
-*Invigorators* are particularly useful when:
+*Invigorators* are, for example, particularly useful when:
 
 - they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying those single step outputs, in a single line
 - they are numerously encapsulated using Composite Pattern into single Facades that can be deployed in any of a variety of contexts and environments
