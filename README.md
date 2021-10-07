@@ -502,11 +502,12 @@ using(TACreateUserName createAcount = new TACreateUserName())
   createAcount.UserApplication = userApplication;
   
   /* TIP:
-    - Read the order from bottom Invigorator to the top Invigorator, 
-    and the top extension method to the bottom extension method.
+    - Read the execution order from bottom Invigorator to the top Invigorator, 
+    and read their corresponding extension methods from the top extension method to 
+    the bottom extension method.
     - Such is the nature of nesting! */
     
-  TAEmailUserSiteReady cascadedResult = /* Nested, see TIP above */
+  TAEmailUserSiteReady cascadedResult = /* Nested execution order, see TIP above */
     await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
     await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
     await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
