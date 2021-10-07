@@ -506,9 +506,7 @@ using(TACreateUserName createAcount = new TACreateUserName())
   }
   else
   {
-    // Inform the user that an email will be sent to them when 
-    // the account is created, requiring them to verify their 
-    // email address before they can log in.
+    // Inform the calling process that this was succesful
   }
 }
 ```
