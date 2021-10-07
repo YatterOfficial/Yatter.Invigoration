@@ -81,10 +81,16 @@ TActor acted = await Invigorator.ActAsync<TObject,TActor>(TActor actor);
 TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);
 ```
 
-e.g. See below:
+Example:
 
 ```
-CarActor acted = await Yatter.Invigoration.Invigorator.ActAsync<Car,CarActor>(carActor);
+CarActor acted = await Invigorator.ActAsync<Car,CarActor>(carActor); // or (car, carActor)
+...
+var success = acted.IsSuccess;
+...
+var failureMessage = acted.Message;
+...
+var modifiedCar = acted.Car;
 ```
 
 
