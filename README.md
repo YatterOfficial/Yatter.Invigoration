@@ -328,7 +328,7 @@ public virtual void AddToNestedResponse()
 }
 ```
 
-Note that the property ```IsAddedToNest``` is public and not private. This is so that TActors, if properly coded, can also be deserialised for transmission over a connection to another microservice. (Not all Invigorators will be portable in this matter, and the topic of Invigorator Portability, is an advanced topic.)
+Note that the property ```IsAddedToNest``` is public and not private. This is so that TActors, if properly coded, can also be deserialised for transmission over a connection to another microservice. (Not all Invigorators will be portable in this matter, and the topic of Invigorator Portability, is not just a very advanced topic, but it comes with it's own unique set of deserialization challenges.)
 
 And lastly, ActionBase exposes a method to add any other IDisposableObject to it, that you would wish, that is to be disposed of when the Actor is disposed of:
 
