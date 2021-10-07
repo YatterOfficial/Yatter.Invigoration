@@ -108,7 +108,7 @@ MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicAc
 or quite simply:
 
 ```
-MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
+MechanicActor mechanicActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
                                 await Invigorator.ActAsync<Car,CarActor>(carActor));
 ```
 Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first!
