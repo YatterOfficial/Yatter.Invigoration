@@ -274,6 +274,7 @@ class CarActor : Yatter.Invigoration.ActionBase
                 base.Message = ex.Message; // Important! Cascade 'catch' Messages this way!
             }
         }
+        base.AddToNestedResponse(); // Important! This is the LAST thing that must be done!
     }
     
     public override void Dispose()
