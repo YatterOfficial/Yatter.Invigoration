@@ -6,7 +6,7 @@ _If Tetris was applied to Software Engineering, it would be about the Invigorati
 
 - A series of pre-existing shapes are subjected to being dynamically arranged by a pack-and-place management tool which allows individual shapes to be placed subject to the arrangement of those shapes that have preceded them; paralellism is achieved by the same game being played in parallel, with fanning in being represented by the accumulated scores of each of the games complementing the benefits of the existential arrangement patterns of each game.
 
-Invigoration is particularly suited to being utilised within a host of existing design patterns and in being so are minutiae that can be shaped in any arrangement to represent any of these patterns.
+Invigoration is particularly suited to being utilised within a host of existing design patterns and in being so are minutiae that can be shaped into any arrangement to represent any of these patterns.
 
 If the art of design was a sand-castle competition, then all the shapes are best represented when the grains of sand are the invigorators that are the basic building block of the Invigoration Pattern.
 
