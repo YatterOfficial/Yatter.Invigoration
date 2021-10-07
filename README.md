@@ -1,6 +1,6 @@
 ## Yatter.Invigoration
 
-INVIGORATION PATTERN
+# Invigoration Pattern a.k.a The Invigorator's Trammel
 
 _If Tetris was applied to Software Engineering, it would be about the Invigoration Model._
 
