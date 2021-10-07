@@ -511,6 +511,49 @@ using(TACreateUserName createAcount = new TACreateUserName())
 }
 ```
 
+Alternately, if the same tasks were to be conducted by a Durable Function in Windows Azure, the Invigoration would perhaps look like this:
+
+```
+TACreateUserName createAcount = new TACreateUserName(JsonConvert.DeserializeObject<TOCreateUserApplication>(userApplicationJson));
+
+TACreateUserName createUserNameActed = await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount);
+```
+
+Then pass createUserNameActed into the next Function:
+
+```
+// In the next function
+...
+TAUserAccountCreationDetailsSubmission userAccountCreationDetailsSubmissionActed = await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(createUserNameActed);
+...
+```
+
+Then pass userAccountCreationDetailsSubmissionActed into the next function:
+
+```
+// In the next function
+...
+TACreateUserMicrosite createUserMicrosite = await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(userAccountCreationDetailsSubmissionActed);
+...
+```
+Then pass createUserMicrosite into the next function:
+
+```
+// In the next function
+...
+TAEmailUserSiteReady emailUserSiteReady = await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(createUserMicrosite);
+
+if(!emailUserSiteReady.IsSuccess)
+{
+  // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
+}
+else
+{
+  // Inform the calling process that this was succesful
+}
+...
+```
+
 _Now it is just a case of creating each TObject and TActor !!!_
 
 
