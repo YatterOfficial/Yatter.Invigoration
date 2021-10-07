@@ -108,7 +108,8 @@ MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicAc
 or quite simply:
 
 ```
-MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(await Invigorator.ActAsync<Car,CarActor>(carActor));
+MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
+                                await Invigorator.ActAsync<Car,CarActor>(carActor));
 ```
 
 Given that the above could be further nested, it is easy to see the benefits of chaining the IsSuccess and Message, for example:
@@ -118,9 +119,10 @@ BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,Billing
                       await Invigorator.ActAsync<WorkTicket,MechanicActor>(
                       await Invigorator.ActAsync<Car,CarActor>(carActor)));
 ...
-if(!billingActed)
+if(!billingActed.IsSuccess)
 {
-Console.WriteLine($"Payment cannot be pre-authorised as the MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled.");
+  Console.WriteLine(billingActed.Message);
 }
 ...
 ```
+where the output might be: "Payment cannot be be pre-authorised as the MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled."
