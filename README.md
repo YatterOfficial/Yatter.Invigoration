@@ -123,7 +123,9 @@ For example:
 ```
 BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
                       await Invigorator.ActAsync<WorkTicket,MechanicActor>(
-                      await Invigorator.ActAsync<Car,CarActor>(carActor).ReturnMechanicActorFromCarActor()()).ReturnBillingActorFromMechanicActor());
+                      await Invigorator.ActAsync<Car,CarActor>(carActor)
+                            .ReturnMechanicActorFromCarActor())
+                            .ReturnBillingActorFromMechanicActor());
 ...
 if(!billingActed.IsSuccess)
 {
