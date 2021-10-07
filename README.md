@@ -476,7 +476,7 @@ For example, let's design a simple CreateUser trammel chain.
 
 In this example, we will create a user and create the user's micro-site within the application-wide multi-user infrastructure, and then finally, we will email them a link saying that their account can be logged into.
 
-We will also use TO / TA class naming notation to name TObject and TActor classes, respectively. This will be reflected in the Invigoration Nesting.
+We will also use TO / TA class naming notation to name TObject and TActor classes, respectively. This will not just be reflected in the Invigoration Nesting, but also in the class filenames, wherever the software engineer places them. This convention, similar to naming interfaces with a preceding 'I' (e.g. IDisposable), will make the Invigoration Matrix obvious to anyone who looks at the application's directory structures.
 
 The trammel-chain, which will define the Invigorator nesting, is composed from the following bullet-points:
 
