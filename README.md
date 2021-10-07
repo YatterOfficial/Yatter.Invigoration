@@ -41,7 +41,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
   
 ### INVIGORATION PATTERN / INVIGORATOR'S TRAMMEL
 
-- An 'Invigoration Pattern' also known as an 'Invigorator's Trammel', is a statement that defines the relationship of an Object with it's Actor, within the constraints of the Trammel.
+- An 'Invigoration Pattern', also known as an 'Invigorator's Trammel', is a statement that defines the relationship of an Object with it's Actor, within the constraints of the Trammel.
   
 ### INVIGORATOR
 
