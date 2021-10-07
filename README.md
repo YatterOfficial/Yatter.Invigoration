@@ -139,14 +139,14 @@ Alternatively, the BillingActor might have queried the ```mechanicActed.NestedRe
 
 This example does, however, illustrate the simple Invigoration behind a user pressing a submit button on a car servicing website: all the Invigoration happens in a single line of nested code that is easily assembled, readily readable, and easily understood and located locatable in the TObject / TActor matrix.
 
-### Summary
+#### Trammel Summary
 
 - Objects (```TObject```) to be acted upon by an Actor (```TActor```) are confined to one of 16 ```Invigorator's Trammels``` where the most exposed of the 16 trammels is:
     - ```TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);```
 - The other 15 can be cascaded down to ```Invigorator.Act<TObject,TActor>();``` by removing all of the exposed permutations, or by synchronous reduction.
 - All 16 are illustrated in the final analysis below.
 
-## A Coded Example
+### A Coded Example
 
 
 
