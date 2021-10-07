@@ -225,6 +225,8 @@ Indeed, this TActor was designed to be used inside a .NET Interactive Notebook, 
 
 How the IResponsiveHttpClient client works is not in the scope of this tutorial, however it is demonstrated [here](https://github.com/HarrisonOfTheNorth/Yatter-Demo-ResponsiveHttpClient).
 
+CarActor is quite a simple object - all of the salient actions are undertaken in the ActionAsync() method - and yet it's underlying TActor trammel structure as is attributed by the ActionBase, is understood by the omnipotent Invigorator class.
+
 ```
 class CarActor : Yatter.Invigoration.ActionBase
 {
@@ -279,3 +281,41 @@ class CarActor : Yatter.Invigoration.ActionBase
 }
 ```
 
+#### An introduction to the ActionBase
+
+The CarActor class below has three available overrides, which are exposed by the ActionBase:
+
+- ```public virtual void Action() {}```
+- ```public async virtual Task ActionAsync() {}```
+- ```public virtual void Dispose() { }```
+
+_The choice of which to override, depends upon whether actions upon it are to be asynchronous, or not, and whether there will be anything to dispose when the object is destroyed._
+
+- ALL the work is done in one of the Action methods - or any additional method that you write in support of which one you choose.
+
+ActionBase also exposes a method of passing the Object to the Actor so that action can be done upon it:
+
+```
+public void AddObject(ObjectBase @object)
+{
+    Object = @object;
+}
+```
+
+As well as exposing four properties:
+
+- ```public ObjectBase Object { get; set; }```
+- ```public bool IsSuccess { get; set; }```
+- ```public string Message { get; set; }```
+=```public List<ActionBase> NestedResponses = new List<ActionBase>();```
+
+Although Invigoration Nesting is an advanced topic, it allows any Invigorator to cycle through the results of the preceding Invigorations.
+
+And lastly, ActionBase exposes a method to add any other IDisposableObject to it, that you would wish, that is to be disposed of when the Actor is disposed of:
+
+```
+public virtual void AddDisposableObject(object @object)
+{
+    Disposables.Add(@object);
+}
+```
