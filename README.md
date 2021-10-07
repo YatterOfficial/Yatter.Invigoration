@@ -111,7 +111,7 @@ or quite simply:
 MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
                                 await Invigorator.ActAsync<Car,CarActor>(carActor));
 ```
-Note that the signature implies that there MUST be an MechanicActor avaip;able to the second invigorator, in the output of the first!
+Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first!
 
 Of course, the above could be further nested - with the same outputs inferred by the signature - so it is easy to also see the benefits of chaining the IsSuccess and Message properties, of each.
 
