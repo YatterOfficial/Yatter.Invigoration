@@ -145,7 +145,7 @@ This example does, however, illustrate the simple Invigoration behind a user pre
     - ```TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);```
 - The other 15 can be cascaded down to ```Invigorator.Act<TObject,TActor>();``` by removing all of the exposed permutations, or by synchronous reduction.
 - All 16 are illustrated above.
-- In the science of Invigoration, the T in TObject and TActor stands for trammel, where TObject and TActor are pronounced tob-ject and tac-tor, tob and tac for short, respectively.
+- In the science of Invigoration, the `T` in `TObject` and `TActor` stands for _trammel_, where ```TObject``` and ```TActor``` are pronounced ```tob-ject``` and ```tac-tor```, _tob and tac for short_, respectively.
 
 ### A Coded Example
 
