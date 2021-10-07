@@ -303,14 +303,15 @@ public void AddObject(ObjectBase @object)
 }
 ```
 
-As well as exposing four properties:
+As well as exposing five properties:
 
-- ```public ObjectBase Object { get; set; }```
-- ```public bool IsSuccess { get; set; }```
-- ```public string Message { get; set; }```
-- ```public List<ActionBase> NestedResponses = new List<ActionBase>();```
+- ```public ObjectBase Object { get; set; }``` - exposes the TObject being acted upon
+- ```public bool IsSuccess { get; set; }``` - exposes if the Action was a success
+- ```public string Message { get; set; }``` - exposes a message explaining why not a success
+- ```public List<ActionBase> NestedResponses = new List<ActionBase>();``` - see below
+- ```public bool IsAddedToNest { get; set; }``` - see below
 
-Although Invigoration Nesting is an advanced topic, it allows any Invigorator to cycle through the results of the preceding Invigorations. 
+Although Invigoration Nesting is an advanced topic, the last two enables any Invigorator to cycle through the results of the preceding Invigorations. 
 
 Hence, there is also a method in the ActionBase that allows a TActor to add itself to the NestedResponses list so that a later TActor can interrogate it.
 
@@ -319,13 +320,15 @@ We will nest some Invigorators later on, to illustrate the benefit of nesting th
 ```
 public virtual void AddToNestedResponse()
 {
-    if (!_isadded)
+    if (!IsAddedToNest)
     {
         NestedResponses.Add(this);
-        _isadded = true;
+        IsAddedToNest = true;
     }
 }
 ```
+
+Note that the property ```IsAddedToNest``` is public and not private. This is so that TActors, if properly coded, can also be deserialised for transmission over a connection to another microservice. (Not all Invigorators will be portable in this matter, and the topic of Invigorator Portability, is an advanced topic.)
 
 And lastly, ActionBase exposes a method to add any other IDisposableObject to it, that you would wish, that is to be disposed of when the Actor is disposed of:
 
