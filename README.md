@@ -141,7 +141,7 @@ This example does, however, illustrate the simple Invigoration behind a user pre
 
 #### Trammel Summary
 
-- Objects (```TObject```) to be acted upon by an Actor (```TActor```) are confined to one of 16 ```Invigorator's Trammel Couplets``` where the most exposed of the 16 trammels is:
+- Objects (```TObject```) to be acted upon by an Actor (```TActor```) are confined to one of 16 ```Invigorator Trammel Couplets``` where the most exposed of the 16 trammels is:
     - ```TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActor actor);```
 - The other 15 can be cascaded down to ```Invigorator.Act<TObject,TActor>();``` by removing all of the exposed permutations, or by synchronous reduction.
 - All 16 are illustrated in the final analysis below.
