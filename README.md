@@ -27,7 +27,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 
 - they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying those single step outputs, each in a single line of code
 - they are numerously encapsulated using Composite Pattern into single Facades that can be deployed in any of a variety of contexts and environments
-- they prevail as single line in anything from an app that glows in front of a user's face, to an HttpTrigger Function, MVC Controller, or Worker in the cloud, that is merely a pixel in the data-scientist's mind's eye of the composite world-wide data-traffic-routes that can be seen in the data-scientist's blissful night-sky
+- they prevail as single line of code in anything from an app that glows in front of a user's face, to an HttpTrigger Function, MVC Controller, or Worker in the cloud, that is merely a pixel in the data-scientist's mind's eye of the composite world-wide data-traffic-routes that can be seen in the data-scientist's blissful night-sky
 - it is desired to efficiently arrange functionality into ordered matrices of TObjects and TActors
 - software engineer's, seeing the word _Invigorator.Act..._ in a line of code, will immediately know it's inner structure - who will thus more readily adapt to being introduced to an existing code-base - who will then also know approximately where to easily find the invigorated matrices of TObjects and TActors, in the code-base, no matter how convoluted the actual applications workflows are
 - TObject and TActor matrices are essentially a look-up spreadsheet of the capability of an application
