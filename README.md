@@ -26,7 +26,9 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store._
 - they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying those single step outputs, each in a single line of code
 - they are numerously encapsulated using Composite Pattern into single Facades that can be deployed in any of a variety of contexts and environments
 - prevail as single line in anything from an app that glows in front of a user's face, to an HttpTrigger Function, MVC Controller, or Worker in the cloud, that is merely a pixel in the mind's eye of all the world-wide data-traffic-routes that can be seen in the data-scientist's night-sky
-- software engineer's seeing the word _Invigorator.Act..._ in a line of code will immediately know it's inner structure and will thus more readily adapt to being introduced to an existing code-base
+- it is desired to efficiently arrange functionality into ordered matrices of TObjects and TActors
+- software engineer's seeing the word _Invigorator.Act..._ in a line of code will immediately know it's inner structure and will thus more readily adapt to being introduced to an existing code-base, and they will also know where to easily find the functionality in the code-base, no matter how convoluted the applications workflows are
+
 
 ## Definitions
 
