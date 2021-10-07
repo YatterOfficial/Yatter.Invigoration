@@ -311,6 +311,19 @@ As well as exposing four properties:
 
 Although Invigoration Nesting is an advanced topic, it allows any Invigorator to cycle through the results of the preceding Invigorations.
 
+Hence, there is also a method in the ActionBase that allows a TActor to add itself to the NestedResponses list so that a later TActor can interrogate it.
+
+```
+public virtual void AddToNestedResponse()
+{
+    if (!_isadded)
+    {
+        NestedResponses.Add(this);
+        _isadded = true;
+    }
+}
+```
+
 And lastly, ActionBase exposes a method to add any other IDisposableObject to it, that you would wish, that is to be disposed of when the Actor is disposed of:
 
 ```
