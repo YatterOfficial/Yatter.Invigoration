@@ -466,4 +466,4 @@ using(CarActor carActor = new CarActor())
 }
 ```
 
-You can imagine that before this was called, that a user had added a work-ticket request to another system, prior to this being called, and that the MechanicActor knew where to get the WorkTicket request from, based upon the identity of the Car that was initially supplied to CarActor
+You can imagine that before this was called, that a user had added a work-ticket request to another system, prior to this being called, and that the MechanicActor knew where to get the WorkTicket request from, based upon the identity of the Car that was initially supplied to CarActor. The identity of the Car would also expose the capacity of the BillingActor to determine who the car owner was, thus determining who to bill.
