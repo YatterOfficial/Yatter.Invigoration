@@ -163,12 +163,7 @@ public class Car : Yatter.Invigoration.ObjectBase
     public string Color { get; set; }
     public string Registration { get; set; }
     public string Base64Image { get; set;}
-
-    public override void Act()
-    {
-        Actor.Action();
-    }
-    
+   
     public override void Dispose()
     {
         // Nothing to dispose of but if there was, we'd do it here!
@@ -189,9 +184,16 @@ As Car is a trammel of TObject, it inherits from ObjectBase:
             Actor = actor;
         }
 
-        public virtual void Act() { }
+        public virtual void Act() 
+        {
+            Actor.Action();
+        }
 
-        public async virtual Task ActAsync() { }
+        public async virtual Task ActAsync() 
+        {
+
+            await Actor.ActionAsync();
+        }
 
         public virtual void Dispose() { }
     }
