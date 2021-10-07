@@ -22,15 +22,17 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 - be collectively deployed to achieve Facade pattern
 - be lineally ordered to achive Adapter pattern
 - be dynamically selected to achieve Factory pattern
+- differentiate between objects, and the actions that objects are subject to
 
 *Invigorators* are particularly useful when:
 
 - they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying those single step outputs, each in a single line of code
 - they are numerously encapsulated using Composite Pattern into single Facades that can be deployed in any of a variety of contexts and environments
-- they prevail as single line-of-code in anything from an app that glows in front of a user's face, to single line-of-code in an HttpTrigger Function, MVC Controller, or Worker in the cloud, where that line-of-code is merely a pixel in the data-scientist's mind's eye of the whole composite world-wide data-traffic-route fly-ways that can wholly be seen in the data-scientist's imagination of the night-sky
+- they prevail as single line-of-code in anything from an app that glows in front of a user's face, to single line-of-code in an HttpTrigger Function, MVC Controller, or Worker in the cloud, where that line-of-code is merely a pixel in the data-scientist's mind's eye of the whole composite world-wide data-traffic-route fly-ways that can wholly be seen in the data-scientist's imagination of the data-luminescent night-sky
 - it is desired to efficiently arrange functionality into ordered matrices of TObjects and TActor
 - software engineer's, seeing the word _Invigorator.Act..._ in a line of code, will immediately know it's inner structure - who will thus more readily adapt to being introduced to an existing code-base - who will then also know approximately where to easily find the invigorated matrices of TObjects and TActors, in the code-base, no matter how convoluted the actual applications workflows are
 - TObject and TActor matrices are essentially a look-up spreadsheet of the capability of an application
+- Invigorators are nested, rendering a lot of work in a single line, with the decisions that relate to the output of one, being handled by the input of the nesting Invigorator; as such, Nested Invigorators remove the code-clutter of decisions that need to be made about their return values
 
 
 ## Definitions
@@ -53,7 +55,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 - Using Generics, the 'T' of Trammel is represented as the T of TObject and the T of TActors
 - TObject and TActor are pronounced tob-ject and tac-tor, respectively ~ tob and tac for short
 - A pictorial grasp of how a trammel can dynamically convert singular TObjects and TActors into a range of dynamic opportunities, can be obtained by looking at videos on YouTube about [The Trammel of Archimedes](https://www.youtube.com/results?search_query=archimedes+Trammel). The most basic representation is the one at [this](https://youtu.be/7Fn-26Jmi5E?t=46) timecode - thanks Mathologer - where each of the two axis can be seen to represent a generics TObject and TActor, respectively. Adding TObjects and TActors just adds to the axis, as seen in the other videos.
-- When a Software Engineer sees an Invigorator in a line-of-code, then because he knows that an Invigorator's signature is based upon TObjects and TActors, then his knowing that a Trammel-T reporesents the base-class of each, he immediately knows where to find the Object that is acted upon, or the Action that the Actor effects upon the Object 
+- When a Software Engineer sees an Invigorator in a line-of-code, then because he knows that an Invigorator's signature is based upon TObjects and TActors, then his knowing that a Trammel-T represents the base-class of each, he immediately knows where to find the Object that is acted upon, or the Action that the Actor effects upon the Object 
 
 16 Invigorator Trammel-Couplets are possible, each illustrated below, of which the first 15 can be derived by removing all of the exposed permutations, or by the synchronous reduction, of the 16th:
 
@@ -109,9 +111,10 @@ or quite simply:
 
 ```
 MechanicActor mechanicActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
-                                await Invigorator.ActAsync<Car,CarActor>(carActor));
+                                await Invigorator.ActAsync<Car,CarActor>(carActor)
+                                                  .ReturnMechanicActorFromCarActor());
 ```
-Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first!
+Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first, hence when nesting the output of Invigorator into the input of a nesting Invigorator, an extension method is needed to consume the output of the first and return and instance of the second.
 
 Of course, the above could be further nested - with the same outputs also inferred by the signature - so it is easy to also see the benefits of chaining the IsSuccess and Message properties, of each.
 
@@ -120,7 +123,9 @@ For example:
 ```
 BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
                       await Invigorator.ActAsync<WorkTicket,MechanicActor>(
-                      await Invigorator.ActAsync<Car,CarActor>(carActor)));
+                      await Invigorator.ActAsync<Car,CarActor>(carActor)
+                            .ReturnMechanicActorFromCarActor())
+                            .ReturnBillingActorFromMechanicActor());
 ...
 if(!billingActed.IsSuccess)
 {
@@ -137,7 +142,7 @@ This message may have been composed from:
 
 Alternatively, the BillingActor might have queried the ```mechanicActed.NestedResponses``` list, where each of the previous actors had added itself to the list so that the next one could copy it, add itself, and pass it on. Although this is an advanced topic, the final actor merely needs to iterate through this list to find where the first ```IsSuccess=false``` occurred, and react accordingly.
 
-This example does, however, illustrate the simple Invigoration behind a user pressing a submit button on a car servicing website: all the Invigoration happens in a single line of nested code that is easily assembled, readily readable, and easily understood and located locatable in the TObject / TActor matrix.
+This example does, however, illustrate the simple Invigoration behind a user pressing a submit button on a car servicing website: all the Invigoration happens in a single line of nested code that is easily assembled, readily readable, and easily understood and located in the TObject / TActor matrix.
 
 #### Trammel Summary
 
@@ -272,6 +277,7 @@ class CarActor : Yatter.Invigoration.ActionBase
                 base.Message = ex.Message; // Important! Cascade 'catch' Messages this way!
             }
         }
+        base.AddToNestedResponse(); // Important! This is the LAST thing that must be done!
     }
     
     public override void Dispose()
@@ -447,9 +453,14 @@ The previous nested example might look like this:
 ```
 using(CarActor carActor = new CarActor())
 {
+  carActor.Path = "cars/W123ABC"; // pseudocode that illustrates the capacity to acquire a Car object
+  
   BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
                         await Invigorator.ActAsync<WorkTicket,MechanicActor>(
-                        await Invigorator.ActAsync<Car,CarActor>(carActor)));
+                        await Invigorator.ActAsync<Car,CarActor>(carActor)
+                              .ReturnMechanicActorFromCarActor())
+                              .ReturnBillingActorFromMechanicActor());
+                            
   if(!billingActed.IsSuccess)
   {
     Console.WriteLine(billingActed.Message);
@@ -460,4 +471,110 @@ using(CarActor carActor = new CarActor())
   }
 }
 ```
+
+You can imagine that before this was called, that a user had added a work-ticket request to another system, prior to this being called, and that the MechanicActor knew where to get the WorkTicket request from, based upon the identity of the Car that was initially supplied to CarActor. The identity of the Car would also expose the capacity of the BillingActor to determine who the car owner was, thus determining who to bill.
+
+### Designing a Nested Invigoration Chain
+
+Nested Invigoration Chains can be designed quite easily, merely by bullet-pointing the workflow, creating a trammel for each bullet point, and for each trammel, designing the TObject and TActor, taking into account that each one's starting state will be determined by the output state of the nested trammel.
+
+For example, let's design a simple CreateUser trammel chain.
+
+In this example, we will create a user and create the user's micro-site within the application-wide multi-user infrastructure, and then finally, we will email them a link saying that their account can be logged into.
+
+We will also use TO / TA class naming notation to name TObject and TActor classes, respectively. This will not just be reflected in the Invigoration Nesting, but also in the class filenames, wherever the software engineer places them. This convention, similar to naming interfaces with a preceding 'I' (e.g. IDisposable), will make the Invigoration Matrix obvious to anyone who looks at the application's directory structures.
+
+The trammel-chain, which will define the Invigorator nesting, is composed from the following bullet-points:
+
+- Determine if User's desired UserName is available - TOUserAccountApplication, TACreateUserName, returns TAUserAccountCreationDetailsValidation
+- Determine if User's information is valid and complete - TOUserAccountCreationDetailsSubmission, TAUserAccountCreationDetailsValidation, returns TACUserMicrositeCreation
+- Create UserMicrosite - TOCreateUserMicrosite, TACUserMicrositeCreation, returns TAEmailUserAccountReady
+- Email User - TOEmailUserAccountReady, TAEmailUserAccountReady returns TAEmailUserAccountReady
+
+Now we can scratch out the prevailing psuedocode:
+
+```
+...
+TOCreateUserApplication userApplication = JsonConvert.DeserializeObject<TOCreateUserApplication>(userApplicationJson);
+...
+using(TACreateUserName createAcount = new TACreateUserName())
+{
+  createAcount.UserApplication = userApplication;
+  
+  /* TIP:
+    - Read the execution order from bottom Invigorator to the top Invigorator, 
+    and read their corresponding extension methods from the top extension method to 
+    the bottom extension method.
+    - Such is the nature of nesting! */
+    
+  TAEmailUserSiteReady cascadedResult = /* Nested execution order, see TIP above */
+    await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(
+    await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(
+    await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(
+    await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount)
+                      .ReturnTAUserAccountCreationDetailsSubmissionFromTACreateUserName())
+                      .ReturnTACreateUserMicrositeFromTAUserAccountCreationDetailsSubmission())
+                      .ReturnTAEmailUserSiteReadyFromTACreateUserMicrosite());
+                      
+  if(!cascadedResult.IsSuccess)
+  {
+    // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
+  }
+  else
+  {
+    // Inform the calling process that this was succesful
+  }
+}
+```
+
+Alternately, if the same tasks were to be conducted by a Durable Function in Windows Azure, the Invigoration would perhaps look like this:
+
+```
+TACreateUserName createAcount = 
+  new TACreateUserName(JsonConvert.DeserializeObject<TOCreateUserApplication>(userApplicationJson));
+
+TACreateUserName createUserNameActed = 
+  await Invigorator.ActAsync<TOCreateUserApplication,TACreateUserName>(createAcount);
+```
+
+Then pass createUserNameActed into the next Function:
+
+```
+// In the next function
+...
+TAUserAccountCreationDetailsSubmission userAccountCreationDetailsSubmissionActed = 
+  await Invigorator.ActAsync<TOUserAccountCreationDetailsSubmission,TAUserAccountCreationDetailsSubmission>(createUserNameActed);
+...
+```
+
+Then pass userAccountCreationDetailsSubmissionActed into the next function:
+
+```
+// In the next function
+...
+TACreateUserMicrosite createUserMicrosite = 
+  await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(userAccountCreationDetailsSubmissionActed);
+...
+```
+Then pass createUserMicrosite into the next function:
+
+```
+// In the next function
+...
+TAEmailUserSiteReady emailUserSiteReady = 
+  await Invigorator.ActAsync<TOEmailUserSiteReady,TAEmailUserSiteReady>(createUserMicrosite);
+
+if(!emailUserSiteReady.IsSuccess)
+{
+  // Return cascadedResult.Message to the user so that they know what to fix before pressing submit again
+}
+else
+{
+  // Inform the calling process that this was succesful
+}
+...
+```
+
+_Now it is just a case of creating each TObject and TActor !!!_
+
 
