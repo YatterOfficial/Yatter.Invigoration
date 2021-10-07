@@ -149,7 +149,11 @@ This example does, however, illustrate the simple Invigoration behind a user pre
 
 ### A Coded Example
 
-We will start with the contrived TObject of a Car:
+#### Car, an example of TObject
+
+We will start with the contrived TObject of a Car.
+
+Other than the trammel structure that is forced upon it by the ObjectBase, Car looks just like an ordinary DTO:
 
 ```
 public class Car : Yatter.Invigoration.ObjectBase
@@ -211,5 +215,67 @@ _The choice of which to override, depends upon whether actions upon it are to be
 
 The ```Actor``` is also exposed in the ```ObjectBase``` class, which is added by the ```Invigorator```.
 
+#### CarActor, an example of TActor
 
+We will start with the contrived TActor of a CarActor.
+
+Other than the trammel structure that is forced upon it by the ActionBase, CarActor looks just like an ordinary object that does something to a DTO.
+
+Indeed, this TActor was designed to be used inside a .NET Interactive Notebook, which fetches a Car JSON data object from a remote server, and then prints out HTML using PocketView (namespace Microsoft.DotNet.Interactive.Formatting.PocketViewTags).
+
+How the IResponsiveHttpClient client works is not in the scope of this tutorial, however it is demonstrated [here](https://github.com/HarrisonOfTheNorth/Yatter-Demo-ResponsiveHttpClient).
+
+```
+class CarActor : Yatter.Invigoration.ActionBase
+{
+    public Car Car { get { return (Car)base.Object; } }
+    public string Path { get; set; }
+    
+    public CarActor() {}
+
+    public async override Task ActionAsync()
+    {
+        Yatter.Http.Clients.IResponsiveHttpClient client = new Yatter.Http.Clients.ResponsiveHttpClient();
+    
+        CarResponse response = await client.GetAsync<CarResponse, CarRequest>(new CarRequest() { Path = Path });
+        
+        base.IsSuccess = response.IsSuccess; // Important! Cascade 'response' Errors this way!
+        base.Message = response.Message;     // Important! Cascade 'response' Messages this way!
+        
+        bool success = false;
+        
+        if (response != null) { success = response.IsSuccess; }
+
+        if (success&&response!=null&&response.Car!=null)
+        {
+            try
+            {
+                // 1. Deserialise the response
+                Car car = Newtonsoft.Json.JsonConvert.DeserializeObject<Car>(response.CarJson);
+
+                // 2. Do something with that result   
+                PocketView textview = span[style:"color:blue"]($"Car: {car.Make}, {car.Color}, {car.Registration}");
+                textview.Display("text/html");
+
+                PocketView imageview = span(img[src:$"data:image/jpeg;base64,{car.Base64Image}"]);
+                imageview.Display("text/html");
+
+                // 3. Assign the return base.Object
+                base.Object = car; /* This is important, if you want access to the base Object, see the 
+                declaration for the Car property, above. */
+            }
+            catch(Exception ex)
+            {
+                base.IsSuccess = false;    // Important! Cascade 'catch' Errors this way!
+                base.Message = ex.Message; // Important! Cascade 'catch' Messages this way!
+            }
+        }
+    }
+    
+    public override void Dispose()
+    {
+        ((Car)base.Object).Dispose();
+    }
+}
+```
 
