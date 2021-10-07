@@ -10,7 +10,7 @@ Invigoration is particularly suited to being utilised within a host of existing 
 
 If the art of design was a sand-castle competition, then all the shapes are best represented when the grains of sand are the invigorators that are the basic building block of the Invigoration Pattern.
 
-_In such a case, the 'Sand Castle Competition' is the ubiquitous app-store._
+_In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 
 ## Benefits
 
