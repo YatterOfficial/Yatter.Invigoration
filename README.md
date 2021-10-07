@@ -338,3 +338,59 @@ public virtual void AddDisposableObject(object @object)
     Disposables.Add(@object);
 }
 ```
+The ActionBase, as described, is as follows:
+
+```
+  public abstract class ActionBase : IAction, IDisposable
+  {
+
+
+      public ObjectBase Object { get; set; }
+      public bool IsSuccess { get; set; }
+      public string Message { get; set; }
+      public List<ActionBase> NestedResponses = new List<ActionBase>();
+      public bool IsAddedToNest { get; set; }
+
+      private List<object> Disposables = new List<object>(); 
+
+      public virtual void Action() {}
+
+      public async virtual Task ActionAsync() {}
+
+      public void AddObject(ObjectBase @object)
+      {
+          Object = @object;
+      }
+
+      public virtual void AddDisposableObject(object @object)
+      {
+          Disposables.Add(@object);
+      }
+
+      public virtual void AddToNestedResponse()
+      {
+          if (!IsAddedToNest)
+          {
+              NestedResponses.Add(this);
+              IsAddedToNest = true;
+          }
+      }
+
+      public virtual void Dispose()
+      {
+          foreach (var item in Disposables)
+          {
+              try
+              {
+                  var disposable = (IDisposable)item;
+
+                  disposable.Dispose();
+              }
+              catch(Exception ex)
+              {
+                  // fail gracefully
+              }
+          }
+      }
+  }
+```
