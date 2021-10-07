@@ -112,9 +112,9 @@ or quite simply:
 ```
 MechanicActor mechanicActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(
                                 await Invigorator.ActAsync<Car,CarActor>(carActor)
-                                                  .TransformCarActorToMechanicActor());
+                                                  .ReturnMechanicActorFromCarActor());
 ```
-Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first, hence an extension method is needed to consume the output of the first, to create a new instance of the MechanicActor, and add the CarActor acted output to it's initial input state.
+Note that the signature implies that there MUST be an MechanicActor available to the second invigorator, in the output of the first, hence when nesting the output of Invigorator into the input of a nesting Invigorator, an extension method is needed to consume the output of the first and return and instance of the second.
 
 Of course, the above could be further nested - with the same outputs also inferred by the signature - so it is easy to also see the benefits of chaining the IsSuccess and Message properties, of each.
 
@@ -123,7 +123,7 @@ For example:
 ```
 BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
                       await Invigorator.ActAsync<WorkTicket,MechanicActor>(
-                      await Invigorator.ActAsync<Car,CarActor>(carActor).TransformCarActorToMechanicActor()).TransformMechanicActorToBillingActor());
+                      await Invigorator.ActAsync<Car,CarActor>(carActor).ReturnMechanicActorFromCarActor()()).ReturnBillingActorFromMechanicActor());
 ...
 if(!billingActed.IsSuccess)
 {
