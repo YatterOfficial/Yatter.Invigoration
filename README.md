@@ -480,10 +480,10 @@ We will also use TO / TA class naming notation to name TObject and TActor classe
 
 The trammel-chain, which will define the Invigorator nesting, is composed from the following bullet-points:
 
-- Determine if User's desired UserName is available - TOCreateUserApplication, TACreateUserName
-- Determine if User's information is valid and complete - TOUserAccountCreationDetailsSubmission, TAUserAccountCreationDetailsSubmission
-- Create UserMicrosite - TOCreateUserMicrosite, TACreateUserMicrosite
-- Email User - TOEmailUserSiteReady, TAEmailUserSiteReady
+- Determine if User's desired UserName is available - TOUserAccountApplication, TACreateUserName, returns TAUserAccountCreationDetailsValidation
+- Determine if User's information is valid and complete - TOUserAccountCreationDetailsSubmission, TAUserAccountCreationDetailsValidation, returns TACUserMicrositeCreation
+- Create UserMicrosite - TOCreateUserMicrosite, TACUserMicrositeCreation, returns TAEmailUserAccountReady
+- Email User - TOEmailUserAccountReady, TAEmailUserAccountReady returns TAEmailUserAccountReady
 
 Now we can scratch out the prevailing psuedocode:
 
