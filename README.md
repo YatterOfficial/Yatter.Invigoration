@@ -283,7 +283,7 @@ class CarActor : Yatter.Invigoration.ActionBase
 
 #### An introduction to the ActionBase
 
-The CarActor class below has three available overrides, which are exposed by the ActionBase:
+The CarActor class above has three available overrides, which are exposed by the ActionBase:
 
 - ```public virtual void Action() {}```
 - ```public async virtual Task ActionAsync() {}```
