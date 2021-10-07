@@ -14,18 +14,18 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store._
 
 ## Benefits
 
-For example, *Invigorators* can be arranged to:
+*Invigorators* can be arranged to:
 
 - be encapsulted to achieve Composite pattern
 - be collectively deployed to achieve Facade pattern
 - be lineally ordered to achive Adapter pattern
 - be dynamically selected to achieve Factory pattern
 
-Examples where *Invigorators* are particularly useful are:
+*Invigorators* are particularly useful when:
 
-- when they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying single step outputs, in a single line
-- prevail as single line in an HttpTrigger Function or MVC Controller to economically encapsulate functionality that can be used elsewhere
-- be multiply encapsulated to achieve Facade pattern so that they can be deployed to any of a multiple of facades
+- they are orchestrated within Azure's Dynamic Functions to take single steps inputs, supplying those single step outputs, in a single line
+- they are numerously encapsulated using Composite Pattern into single Facades that can be deployed in any of a variety of contexts and environments
+- prevail as single line in anything from an app that glows in front of a user's face, to an HttpTrigger Function, MVC Controller, or Worker in the cloud, that is merely a pixel in the mind's eye of all the world-wide data-traffic-routes that can be seen in the data-scientist's night-sky
 - software engineer's seeing the word _Invigorator.Act..._ in a line of code will immediately know it's inner structure and will thus more readily adapt to being introduced to an existing code-base
 
 ## Definitions
