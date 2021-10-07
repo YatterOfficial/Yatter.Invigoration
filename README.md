@@ -152,7 +152,7 @@ This example does, however, illustrate the simple Invigoration behind a user pre
 We will start with the contrived TObject of a Car:
 
 ```
-class Car : Yatter.Invigoration.ObjectBase
+public class Car : Yatter.Invigoration.ObjectBase
 {
     public Car()
     {
@@ -171,7 +171,7 @@ class Car : Yatter.Invigoration.ObjectBase
     
     public override void Dispose()
     {
-        // Nothing to dispose of but if therer was, do it here!
+        // Nothing to dispose of but if there was, we'd do it here!
     }
 }
 ```
