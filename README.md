@@ -198,3 +198,18 @@ As Car is a trammel of TObject, it inherits from ObjectBase:
         public virtual void Dispose() { }
     }
 ```
+
+#### An introduction to the ObjectBase
+
+The Car class above has three overrides available to it, which are exposed by the ```ObjectBase```:
+
+- ```public virtual void Act() { }```
+- ```public async virtual Task ActAsync() { }```
+- ```public virtual void Dispose() { }```
+
+_The choice of which to override, depends upon whether actions upon it are to be asynchronous, or not, and whether there will be anything to dispose when the object is destroyed._
+
+The ```Actor``` is also exposed in the ```ObjectBase``` class, which is added by the ```Invigorator```.
+
+
+
