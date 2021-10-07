@@ -442,5 +442,22 @@ using(CarActor carActor = new CarActor()) // Both ObjectBase and ActionBase inhe
 }
 ```
 
+The previous nested example might look like this:
 
+```
+using(CarActor carActor = new CarActor())
+{
+  BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
+                        await Invigorator.ActAsync<WorkTicket,MechanicActor>(
+                        await Invigorator.ActAsync<Car,CarActor>(carActor)));
+  if(!billingActed.IsSuccess)
+  {
+    Console.WriteLine(billingActed.Message);
+  }
+  else
+  {
+    //  do something with billingActed
+  }
+}
+```
 
