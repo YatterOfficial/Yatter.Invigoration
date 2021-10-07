@@ -128,4 +128,14 @@ if(!billingActed.IsSuccess)
 }
 ...
 ```
-where the output might be: "Payment cannot be be pre-authorised as the MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled."
+where the output might be: "Payment cannot be be pre-authorised because the MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled."
+
+This message may have been composed from:
+
+- the MechanicActor Message, which would have read "MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled"
+- the BillingActor Message, which would have read "Payment cannot be pre-authorised because the {mechanicActed.Message}."
+
+Alternatively, the BillingActor might have queried the mechanicActed.NestedResponseList, where each of the previous actors had added itself to the list so that the next one could copy it, add itself, and pass it on. This, however, is an advanced topic.
+
+
+
