@@ -556,6 +556,10 @@ else
 
 _Now it is just a case of creating each TObject and TActor !!!_
 
+Should Invigorators be nested?
 
+On one hand, nesting has various obvious advantages.
+
+But on the other hand, it does necessitate the requirement for a TActor to preconfigure it's output to the actor that will consume it. 
 
 
