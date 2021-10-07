@@ -283,13 +283,14 @@ class CarActor : Yatter.Invigoration.ActionBase
 
 #### An introduction to the ActionBase
 
-The CarActor class above has three available overrides, which are exposed by the ActionBase:
+The CarActor class above has four available overrides, which are exposed by the ActionBase:
 
 - ```public virtual void Action() {}```
 - ```public async virtual Task ActionAsync() {}```
 - ```public virtual void Dispose() { }```
+- ```public virtual void AddToNestedResponse()```
 
-_The choice of which to override, depends upon whether actions upon it are to be asynchronous, or not, and whether there will be anything to dispose when the object is destroyed._
+_The choice of which to override, depends upon whether actions upon it are to be asynchronous, or not, and whether there will be anything to dispose when the object is destroyed._ The fourth, ```AddToNestedResponse()```, is about the advanced topic of _Invigoration Nesting_, which is introduced shortly.
 
 - ALL the work is done in one of the Action methods - or any additional method that you write in support of which one you choose.
 
@@ -307,11 +308,13 @@ As well as exposing four properties:
 - ```public ObjectBase Object { get; set; }```
 - ```public bool IsSuccess { get; set; }```
 - ```public string Message { get; set; }```
-=```public List<ActionBase> NestedResponses = new List<ActionBase>();```
+- ```public List<ActionBase> NestedResponses = new List<ActionBase>();```
 
-Although Invigoration Nesting is an advanced topic, it allows any Invigorator to cycle through the results of the preceding Invigorations.
+Although Invigoration Nesting is an advanced topic, it allows any Invigorator to cycle through the results of the preceding Invigorations. 
 
 Hence, there is also a method in the ActionBase that allows a TActor to add itself to the NestedResponses list so that a later TActor can interrogate it.
+
+We will nest some Invigorators later on, to illustrate the benefit of nesting the responses.
 
 ```
 public virtual void AddToNestedResponse()
