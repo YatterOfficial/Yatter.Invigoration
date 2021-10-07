@@ -37,7 +37,7 @@ _In such a case, the 'Sand Castle Competition' is the ubiquitous app-store!_
 
 ### INVIGORATION
 
-- 'Invigoration' is "the activity of giving vitality and vigour to something", which in the Software Engineering sense, is achieved by an Actor causing an Action to be undertaken upon an Object.
+- 'Invigoration' is "the activity of giving vitality and vigour to something", which in the Software Engineering sense, is achieved by an Actor causing an Action to be undertaken upon an Object; this is phrased using generics as TActors causing Acts upon TObjects
   
 ### INVIGORATION PATTERN / INVIGORATOR'S TRAMMEL
 
