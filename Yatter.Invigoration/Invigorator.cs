@@ -122,7 +122,6 @@ namespace Yatter.Invigoration
 
             TActor tActor = default(TActor);
             tActor = actor;
-            tActor.AddObject(tObject);
 
             tObject.AddActor((IAction)tActor);
 

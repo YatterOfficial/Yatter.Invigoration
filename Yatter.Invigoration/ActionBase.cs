@@ -6,12 +6,17 @@ namespace Yatter.Invigoration
 {
     public abstract class ActionBase : IAction, IDisposable
     {
-        private bool _isadded;
+        
 
-        public ObjectBase Object { get; set; }
+        public ObjectBase Object
+        {
+            get;
+            set;
+        }
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
         public List<ActionBase> NestedResponses = new List<ActionBase>();
+        public bool IsAddedToNest { get; set; }
 
         private List<object> Disposables = new List<object>(); 
 
@@ -33,10 +38,10 @@ namespace Yatter.Invigoration
 
         public virtual void AddToNestedResponse()
         {
-            if (!_isadded)
+            if (!IsAddedToNest)
             {
                 NestedResponses.Add(this);
-                _isadded = true;
+                IsAddedToNest = true;
             }
         }
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.0.8</PackageVersion>
+    <PackageVersion>0.0.10</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Description>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TObject @object), or Invigorator&lt;TObject,TActor&gt;.Act(string objectjson).</Description>
     <Copyright>Anthony Harrison</Copyright>
