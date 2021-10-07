@@ -548,7 +548,8 @@ Then pass userAccountCreationDetailsSubmissionActed into the next function:
 ```
 // In the next function
 ...
-TACreateUserMicrosite createUserMicrosite = await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(userAccountCreationDetailsSubmissionActed);
+TACreateUserMicrosite createUserMicrosite = 
+      await Invigorator.ActAsync<TOCreateUserMicrosite,TACreateUserMicrosite>(userAccountCreationDetailsSubmissionActed);
 ...
 ```
 Then pass createUserMicrosite into the next function:
