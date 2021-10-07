@@ -84,6 +84,7 @@ TActor acted = await Invigorator.ActAsync<TObject,TActor>(TObject @object, TActo
 Example:
 
 ```
+...
 carActor.Add([any objects that the actor needs to act upon the car]); // pseudocode
 ...
 CarActor acted = await Invigorator.ActAsync<Car,CarActor>(carActor); // or (car, carActor)
@@ -93,6 +94,33 @@ var success = acted.IsSuccess;
 var failureMessage = acted.Message;
 ...
 var modifiedCar = acted.Car;
+...
 ```
 
+Note: Invigorators can be chained such that the success or failure is managed in the next link in the chain.
 
+```
+CarActor carActed = await Invigorator.ActAsync<Car,CarActor>(carActor);
+
+MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(carActed);
+```
+
+or quite simply:
+
+```
+MechanicActor mechanicalActed = await Invigorator.ActAsync<WorkTicket,MechanicActor>(await Invigorator.ActAsync<Car,CarActor>(carActor));
+```
+
+Given that the above could be further nested, it is easy to see the benefits of chaining the IsSuccess and Message, for example:
+
+```
+BillingActor billingActed = Invigorator.ActAsync<PrePaymentAuthorization,BillingActor>(
+                      await Invigorator.ActAsync<WorkTicket,MechanicActor>(
+                      await Invigorator.ActAsync<Car,CarActor>(carActor)));
+...
+if(!billingActed)
+{
+Console.WriteLine($"Payment cannot be pre-authorised as the MechanicActor has identified that there are not any parts available, hence the work cannot be scheduled.");
+}
+...
+```
