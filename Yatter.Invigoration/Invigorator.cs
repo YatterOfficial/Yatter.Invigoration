@@ -130,6 +130,21 @@ namespace Yatter.Invigoration
             return tActor;
         }
 
+        public async static Task<TActor> ActAsync<TObject, TActor>(ActionBase actor)
+            where TObject : ObjectBase, new()
+            where TActor : ActionBase, new()
+        {
+            TObject tObject = default(TObject);
+            tObject = new TObject();
+
+
+            tObject.AddActor(actor);
+
+            await actor.ActionAsync();
+
+            return (TActor)actor;
+        }
+
         public async static Task<TActor> ActAsync<TObject, TActor>(string json, TActor actor)
         where TObject : ObjectBase, new()
         where TActor : ActionBase, new()

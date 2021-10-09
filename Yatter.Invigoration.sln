@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatter.Invigoration", "Yatter.Invigoration/Yatter.Invigoration.csproj", "{744166A6-47A1-428E-8A2E-B7F480CF42CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatter.Invigoration", "Yatter.Invigoration\Yatter.Invigoration.csproj", "{744166A6-47A1-428E-8A2E-B7F480CF42CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{05B00006-6E1E-4D81-A854-9CAC4E5584A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{744166A6-47A1-428E-8A2E-B7F480CF42CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{744166A6-47A1-428E-8A2E-B7F480CF42CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{744166A6-47A1-428E-8A2E-B7F480CF42CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B00006-6E1E-4D81-A854-9CAC4E5584A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B00006-6E1E-4D81-A854-9CAC4E5584A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B00006-6E1E-4D81-A854-9CAC4E5584A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B00006-6E1E-4D81-A854-9CAC4E5584A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
