@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Yatter.Invigoration
 {
-    public abstract class ActionBase : IAction, IDisposable
+    public abstract class ActionBase : IActions, IDisposable, IActor
     {
-        
+
         /// <summary>
         /// The original TObject
         /// </summary>
@@ -16,7 +16,7 @@ namespace Yatter.Invigoration
             set;
         }
 
-        public string TActorType {  get; set; }
+        public string TActorType { get; set; }
         /// <summary>
         /// Was the Action a Success?
         /// </summary>
@@ -56,19 +56,19 @@ namespace Yatter.Invigoration
         /// <summary>
         /// A list of IDisposable objects to be disposed of when this object is disposed of.
         /// </summary>
-        private List<object> Disposables = new List<object>(); 
+        private List<object> Disposables = new List<object>();
 
         /// <summary>
         /// The synchronous Action to be undertaken by the TActor, only called by the Invigorator if it's trammel is Invigorator.Act<TObject,TActor>(...)
         /// </summary>
-        public virtual void Action() {}
+        public virtual void Action() { }
 
 #pragma warning disable CS1998
         /// <summary>
         /// The asynchronous Action to be undertaken by the TActor, only called by the Invigorator if it's trammel is Invigorator.ActAsync<TObject,TActor>(...)
         /// </summary>
         /// <returns></returns>
-        public async virtual Task ActionAsync() {}
+        public async virtual Task ActionAsync() { }
 #pragma warning restore CS1998
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Yatter.Invigoration
 
                     disposable.Dispose();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     // fail gracefully
                 }

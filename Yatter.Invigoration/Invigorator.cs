@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Yatter.Invigoration
 {
-    public class Invigorator
+    public static class Invigorator
     {
         public static TActor Act<TObject, TActor>()
         where TObject : ObjectBase, new()
@@ -16,7 +16,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             tActor.Action();
 
@@ -34,7 +34,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             tActor.Action();
 
@@ -52,7 +52,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             tActor.Action();
 
@@ -70,7 +70,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 
@@ -88,7 +88,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 
@@ -106,7 +106,7 @@ namespace Yatter.Invigoration
             tActor = new TActor();
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 
@@ -123,7 +123,7 @@ namespace Yatter.Invigoration
             TActor tActor = default(TActor);
             tActor = actor;
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 
@@ -156,7 +156,7 @@ namespace Yatter.Invigoration
             tActor = actor;
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 
@@ -174,7 +174,7 @@ namespace Yatter.Invigoration
             tActor = actor;
             tActor.AddObject(tObject);
 
-            tObject.AddActor((IAction)tActor);
+            tObject.AddActor((IActions)tActor);
 
             await tActor.ActionAsync();
 

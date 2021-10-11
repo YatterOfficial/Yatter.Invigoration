@@ -3,23 +3,24 @@ using System.Threading.Tasks;
 
 namespace Yatter.Invigoration
 {
-    public abstract class ObjectBase : IDisposable
+    public abstract class ObjectBase : IDisposable, IObjectBase
     {
         [Newtonsoft.Json.JsonIgnore]
-        public IAction Actor { get; set; }
+        public IActions Actor { get; set; }
 
-        public void AddActor(IAction actor)
+        public void AddActor(IActions actor)
         {
             Actor = actor;
         }
 
-        public virtual void Act() {
+        public virtual void Act()
+        {
             Actor.Action();
         }
 
 #pragma warning disable CS1998
-        public async virtual Task ActAsync() {
-
+        public async virtual Task ActAsync()
+        {
             await Actor.ActionAsync();
         }
 #pragma warning restore CS1998

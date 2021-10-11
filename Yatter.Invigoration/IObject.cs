@@ -1,8 +1,8 @@
 ﻿using System;
 namespace Yatter.Invigoration
 {
-    public interface IObject : IAction
+    public interface IObject : IActions
     {
-        public void AddActor(IAction printer);
+        public void AddActor(IActions tActor);
     }
 }
