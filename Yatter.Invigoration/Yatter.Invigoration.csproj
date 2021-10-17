@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <PackageVersion>0.3.0</PackageVersion>
+    <PackageVersion>0.3.1</PackageVersion>
     <Authors>Anthony Harrison</Authors>
     <Description>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TObject @object), or Invigorator&lt;TObject,TActor&gt;.Act(string objectjson).</Description>
     <Copyright>Anthony Harrison</Copyright>
@@ -10,12 +10,13 @@
     <Summary>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to an Invigorator.</Summary>
     <Title>Yatter.Invigoration</Title>
     <PackOnBuild>true</PackOnBuild>
-    <PackageIconUrl>https://avatars.githubusercontent.com/u/25448533</PackageIconUrl>
+    <PackageIconUrl>https://avatars.githubusercontent.com/u/92665945</PackageIconUrl>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <PackageLicenseUrl>https://github.com/HarrisonOfTheNorth/Yatter.Invigoration/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageProjectUrl>https://github.com/HarrisonOfTheNorth/Yatter.Invigoration</PackageProjectUrl>
-    <PackageReleaseNotes>Alpha Release</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/YatterOfficial/Yatter.Invigoration</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>Alpha Release, updated Nuget PackageLicenseExpression and PackageIcon</PackageReleaseNotes>
     <PackageTags>Yatter, Invigoration, Invigorator</PackageTags>
     <PackageId>Yatter.Invigoration</PackageId>
   </PropertyGroup>
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TActor\" />
