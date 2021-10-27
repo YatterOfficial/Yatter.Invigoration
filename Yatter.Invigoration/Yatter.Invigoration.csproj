@@ -4,10 +4,10 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackageVersion>0.3.3</PackageVersion>
     <Authors>Anthony Harrison</Authors>
-    <Description>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TObject @object), or Invigorator&lt;TObject,TActor&gt;.Act(string objectjson).</Description>
+    <Description>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TActor tActor), or Invigorator&lt;TObject,TActor&gt;.ActAsync(TActor tActor).</Description>
     <Copyright>Anthony Harrison</Copyright>
     <Owners>Anthony Harrison</Owners>
-    <Summary>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to an Invigorator.</Summary>
+    <Summary>Invigoration by the decoupling of objects and the actions that they are subject to, then Invigorating them by passing the TObject, and a vigorant TActor, to Invigorator&lt;TObject,TActor&gt;.Act(TActor tActor), or Invigorator&lt;TObject,TActor&gt;.ActAsync(TActor tActor).</Summary>
     <Title>Yatter.Invigoration</Title>
     <PackOnBuild>true</PackOnBuild>
     <PackageIconUrl>https://avatars.githubusercontent.com/u/92665945</PackageIconUrl>
